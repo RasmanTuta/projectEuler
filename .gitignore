@@ -1,0 +1,7 @@
+.idea/
+projectEuler.iml
+target/
+lib_managed/
+src_managed/
+project/project.iml
+project/boot/
