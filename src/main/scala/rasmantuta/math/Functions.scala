@@ -21,5 +21,10 @@ object Functions {
     }
   }
 
+  def binomialCoefficient(n: Int, k: Int): BigInt = {
+    val nom = ((n - k + 1) to n).map(BigInt(_)).reduceLeft(_ * _)
+    val denom = (1 to k).map(BigInt(_)).reduceLeft(_ * _)
+    nom/denom
+  }
 
 }

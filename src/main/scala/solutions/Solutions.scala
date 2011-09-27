@@ -330,3 +330,25 @@ object Solution_14 extends Solution{
   }
 
 }
+
+object Solution_15 extends Solution{
+//  137846528820
+//  Solved in: 0.0080 seconds
+
+  override def solveIt {
+
+
+    println(Functions.binomialCoefficient(40, 20))
+  }
+
+}
+
+object Solution_16 extends Solution{
+//  1366
+//  Solved in: 0.0040 seconds
+
+  override def solveIt {
+    println(BigInt(2).pow(1000).toString.map(_.asDigit).reduceLeft(_ + _))
+  }
+
+}
