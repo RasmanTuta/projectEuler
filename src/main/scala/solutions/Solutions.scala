@@ -3,7 +3,7 @@ package solutions
 import collection.immutable.Range
 import rasmantuta.math.{Functions, Series}
 import collection.Seq
-
+import org.joda.time.{DateTimeConstants, DateMidnight}
 
 trait Solution {
   def main(args: Array[String]) {
@@ -363,12 +363,10 @@ object Solution_17 extends Solution{
 }
 
 object Solution_18 extends Solution{
-//
-//    
-
-  override def solveIt:Any = {
 //    1074
 //    Solved in: 0.017 seconds
+
+  override def solveIt:Any = {
 
     val triangle = """75
                       95 64
@@ -390,5 +388,29 @@ object Solution_18 extends Solution{
 
     Functions.findTrianglePathValue(vals)(_ + _)(_ max _)
 
+  }
+}
+
+object Solution_19 extends Solution{
+//    171
+//    Solved in: 0.127 seconds
+
+  override def solveIt:Any = {
+    val sundays = for {
+      y <- (1901 to 2000)
+      m <- (1 to 12)
+      d = new DateMidnight(y, m, 1).dayOfWeek().get
+      if (d == DateTimeConstants.SUNDAY)
+    } yield d
+    sundays.size
+  }
+}
+
+object Solution_20 extends Solution{
+//    648
+//    Solved in: 0.0050 seconds
+
+  override def solveIt:Any = {
+    (BigInt(1) to BigInt(100)).reduce(_ * _).toString.map(_.asDigit).reduce(_ + _)
   }
 }
