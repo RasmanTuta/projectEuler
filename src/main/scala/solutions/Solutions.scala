@@ -2,25 +2,24 @@ package solutions
 
 import collection.immutable.Range
 import rasmantuta.math.{Functions, Series}
+import collection.Seq
 
 
 trait Solution {
   def main(args: Array[String]) {
     val start = System.currentTimeMillis
-    solveIt
+    println (solveIt:Any)
     println("Solved in: " + (System.currentTimeMillis() - start) / 1000.0 + " seconds")
   }
-  def solveIt = {}
+  def solveIt:Any = {}
 }
 
 object Solution_1  extends Solution{
 //  233168
 // Solved in: 0.068 seconds
 
-  override def solveIt {
-    val sum = (1 until 1000).filter(p => p % 3 == 0 || p % 5 == 0).sum
-
-    println(sum)
+  override def solveIt:Any = {
+    (1 until 1000).filter(p => p % 3 == 0 || p % 5 == 0).sum
   }
 }
 
@@ -28,10 +27,8 @@ object Solution_2 extends Solution{
 //  4613732
 //  Solved in: 0.02 seconds
 
-  override def solveIt {
-    val sum = Series.fibonacci.takeWhile( _ < 4000000).filter( _ % 2 == 0).sum
-
-    println(sum)
+  override def solveIt:Any = {
+    Series.fibonacci.takeWhile( _ < 4000000).filter( _ % 2 == 0).sum
   }
 }
 
@@ -39,10 +36,10 @@ object Solution_3 extends Solution{
 //  6857
 //  Solved in: 1.182 seconds
   
-  override def solveIt {
+  override def solveIt:Any = {
     val factors: Stream[Int] = Series.primes.takeWhile(_ < 1000000).filter(600851475143L % _ == 0)
 
-    println( factors.last )
+     factors.last
   }
 }
 
@@ -50,21 +47,17 @@ object Solution_4 extends Solution{
 //  906609
 //  Solved in: 0.514 seconds
 
-  override def solveIt {
-    val max: Int = (100 until 1000).flatMap(i => (i until 1000).map(i * _)).filter(i => i.toString() == i.toString().reverse).max
-
-    println(max)
-  }
+  override def solveIt:Any = {
+    (100 until 1000).flatMap(i => (i until 1000).map(i * _)).filter(i => i.toString() == i.toString().reverse).max
+ }
 }
 
 object Solution_5 extends Solution{
 //  Some(232792560)
 //  Solved in: 35.768 seconds
 
-  override def solveIt {
-    val last = Range(2 * 3 * 5 * 7 * 11 * 13 * 17 * 19, Int.MaxValue).find(i => (2 to 20).forall(i % _ == 0))
-
-    println( last )
+  override def solveIt:Any = {
+    Range(2 * 3 * 5 * 7 * 11 * 13 * 17 * 19, Int.MaxValue).find(i => (2 to 20).forall(i % _ == 0))
   }
 }
 
@@ -72,12 +65,10 @@ object Solution_6 extends Solution{
 //  25164150
 //  Solved in: 0.0030 seconds
 
-  override def solveIt {
+  override def solveIt:Any = {
     val vals = 1 to 100
     val sum = vals.sum
-    val diff = sum * sum - vals.map(i => i * i).sum
-
-    println (diff)
+    sum * sum - vals.map(i => i * i).sum
   }
 }
 
@@ -85,10 +76,8 @@ object Solution_7  extends Solution{
 //  104743
 //  Solved in: 0.122 seconds
 
-  override def solveIt {
-    val last = Series.primes.take(10001).last
-
-    println(last)
+  override def solveIt:Any = {
+    Series.primes.take(10001).last
   }
 }
 
@@ -96,7 +85,7 @@ object Solution_8  extends Solution{
 //  40824
 //  Solved in: 0.026 seconds
 
-  override def solveIt {
+  override def solveIt:Any = {
     val input = "73167176531330624919225119674426574742355349194934" +
       "96983520312774506326239578318016984801869478851843" +
       "85861560789112949495459501737958331952853208805511" +
@@ -118,8 +107,7 @@ object Solution_8  extends Solution{
       "05886116467109405077541002256983155200055935729725" +
       "71636269561882670428252483600823257530420752963450"
 
-    val fives = (0 to 995).map(i => input.substring(i, i + 5)).map(s => (0 to 4).map(i => s.substring(i, i+1).toInt).foldLeft(1)( _ * _)).max
-    println(fives)
+    (0 to 995).map(i => input.substring(i, i + 5)).map(s => (0 to 4).map(i => s.substring(i, i+1).toInt).foldLeft(1)( _ * _)).max
   }
 
 }
@@ -128,10 +116,10 @@ object Solution_9 extends Solution{
 //  31875000
 //  Solved in: 0.228 seconds
 
-  override def solveIt {
+  override def solveIt:Any = {
     val seq = for (b <- 2 to 999; a <- 1 until b; c = 1000 - a - b; if a * a + b * b == c * c) yield (a, b, c)
     val a = seq(0)
-    println( a._1 * a._2 * a._3)
+    a._1 * a._2 * a._3
   }
 }
 
@@ -140,10 +128,8 @@ object Solution_10 extends Solution{
 //  142913828922
 //  Solved in: 2.127 seconds
 
-  override def solveIt {
-    val sum = Series.primes.takeWhile(_ < 2000000).map(_.toLong).sum
-
-    println(sum)
+  override def solveIt:Any = {
+    Series.primes.takeWhile(_ < 2000000).map(_.toLong).sum
   }
 }
 
@@ -151,7 +137,7 @@ object Solution_11 extends Solution{
 //  70600674
 //  Solved in: 0.013 seconds
 
-  override def solveIt {
+  override def solveIt:Any = {
     val grid = """08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
                   49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
                   81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
@@ -183,10 +169,7 @@ object Solution_11 extends Solution{
     def products(a:(Range, Int, Int, Int, Int, Int)) = {for (y <- a._1; x <- y * 20 + a._2 to y * 20 + a._3)
             yield { val x2 = x + a._4; val x3 = x + a._5; val x4 = x + a._6 ; ints(x) * ints(x2) * ints(x3) * ints(x4)}}
 
-    val max = List(h, d1, d2, v).map(products(_)).flatten.max
-
-
-    println(max)
+    List(h, d1, d2, v).map(products(_)).flatten.max
   }
 }
 
@@ -194,10 +177,9 @@ object Solution_12 extends Solution{
 //  Some(76576500)
 //  Solved in: 6.671 seconds
 
-  override def solveIt {
+  override def solveIt:Any = {
 
-    val number = Series.triangles.find(Functions.factors(_).size > 500)
-    println(number)
+    Series.triangles.find(Functions.factors(_).size > 500)
   }
 }
 
@@ -205,7 +187,7 @@ object Solution_12 extends Solution{
 object Solution_13 extends Solution{
 
 
-  override def solveIt {
+  override def solveIt:Any = {
 //    5537376230
 //    Solved in: 0.0030 seconds
 
@@ -309,7 +291,7 @@ object Solution_13 extends Solution{
     72107838435069186155435662884062257473692284509516
     20849603980134001723930671666823555245252804609722
     53503534226472524250874054075591789781264330331690"""
-    println(numbers.split("""\W+""").toList.map(BigInt(_)).foldLeft(BigInt(0))(_+_).toString.substring(0,10))
+    numbers.split("""\W+""").toList.map(BigInt(_)).foldLeft(BigInt(0))(_+_).toString.substring(0,10)
 
   }
 }
@@ -318,7 +300,7 @@ object Solution_14 extends Solution{
 //    (837799,525)
 //    Solved in: 1.139 seconds
 
-  override def solveIt {
+  override def solveIt:Any = {
 
     def collatzDepth(n:Long, c: Int):Int = {
       n match{
@@ -326,7 +308,7 @@ object Solution_14 extends Solution{
         case _ =>  collatzDepth(if(n%2==0) n/2 else 3*n+1, c+1)
       }
     }
-    println((1 until 1000000).map(n => (n, collatzDepth(n, 0))).reduceLeft((a, b) => if(a._2 > b._2) a else b))
+    (1 until 1000000).map(n => (n, collatzDepth(n, 0))).reduceLeft((a, b) => if(a._2 > b._2) a else b)
   }
 
 }
@@ -335,10 +317,8 @@ object Solution_15 extends Solution{
 //  137846528820
 //  Solved in: 0.0080 seconds
 
-  override def solveIt {
-
-
-    println(Functions.binomialCoefficient(40, 20))
+  override def solveIt:Any = {
+    Functions.binomialCoefficient(40, 20)
   }
 
 }
@@ -347,8 +327,68 @@ object Solution_16 extends Solution{
 //  1366
 //  Solved in: 0.0040 seconds
 
-  override def solveIt {
-    println(BigInt(2).pow(1000).toString.map(_.asDigit).reduceLeft(_ + _))
+  override def solveIt:Any = {
+    BigInt(2).pow(1000).toString.map(_.asDigit).reduceLeft(_ + _)
   }
 
+}
+
+
+object Solution_17 extends Solution{
+//    21124
+//    Solved in: 0.029 seconds
+
+  override def solveIt:Any = {
+    val onesandteens = List("", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+      "ten", "eleven", "twelve", "thirteen", "fourteen",
+      "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
+    val tens = List("", "", "twenty", "thirty", "forty", "fifty",
+      "sixty", "seventy", "eighty", "ninety")
+    val hundred = "hundred"
+    val thousand = "onethousand"
+
+    def stringify(n:Int):String = {
+      n match {
+        case 1000 => thousand
+        case x:Int if(x > 99) => onesandteens(x/100) + hundred +( if(x%100 != 0) "one" + stringify(x%100) else "")
+        case x:Int if(x > 19) => tens(x/10) + stringify(x%10)
+        case x:Int => onesandteens(x)
+      }
+    }
+
+    (1 to 1000).map(stringify(_)).reduceLeft(_+_).size
+    
+  }
+
+}
+
+object Solution_18 extends Solution{
+//
+//    
+
+  override def solveIt:Any = {
+//    1074
+//    Solved in: 0.017 seconds
+
+    val triangle = """75
+                      95 64
+                      17 47 82
+                      18 35 87 10
+                      20 04 82 47 65
+                      19 01 23 75 03 34
+                      88 02 77 73 07 63 67
+                      99 65 04 28 06 16 70 92
+                      41 41 26 56 83 40 80 70 33
+                      41 48 72 33 47 32 37 16 94 29
+                      53 71 44 65 25 43 91 52 97 51 14
+                      70 11 33 28 77 73 17 78 39 68 17 57
+                      91 71 52 38 17 14 91 43 58 50 27 29 48
+                      63 66 04 68 89 53 67 30 73 16 69 87 40 31
+                      04 62 98 27 23 09 70 98 73 93 38 53 60 04 23"""
+
+    val vals = triangle.split("""\s+""").map(_.toInt).toSeq
+
+    Functions.findTrianglePathValue(vals)(_ + _)(_ max _)
+
+  }
 }
