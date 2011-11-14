@@ -5,14 +5,6 @@ import rasmantuta.math.{Functions, Series}
 import collection.Seq
 import org.joda.time.{DateTimeConstants, DateMidnight}
 
-trait Solution {
-  def main(args: Array[String]) {
-    val start = System.currentTimeMillis
-    println (solveIt:Any)
-    println("Solved in: " + (System.currentTimeMillis() - start) / 1000.0 + " seconds")
-  }
-  def solveIt:Any = {}
-}
 
 object Solution_1  extends Solution{
 //  233168
