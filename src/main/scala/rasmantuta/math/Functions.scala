@@ -45,4 +45,5 @@ object Functions {
     compute(lines.head, lines.tail).reduce(selection(_, _))
   }
 
+  def properDivisors(value: Int)  = {factors(value) - value}
 }

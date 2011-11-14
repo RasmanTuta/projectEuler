@@ -414,3 +414,18 @@ object Solution_20 extends Solution{
     (BigInt(1) to BigInt(100)).reduce(_ * _).toString.map(_.asDigit).reduce(_ + _)
   }
 }
+
+object Solution_21 extends Solution{
+//    31626
+//    Solved in: 2.358 seconds
+
+  override def solveIt:Any = {
+    val amicables = for {
+      x <- (1 until 10000)
+      i = Functions.properDivisors(x).sum
+      j = Functions.properDivisors(i).sum
+      if (i != j && j == x)
+    } yield x
+    amicables.sum
+  }
+}
