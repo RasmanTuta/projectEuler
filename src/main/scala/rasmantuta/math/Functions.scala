@@ -12,12 +12,12 @@ object Functions {
     factors(value, 1, Set())
   }
 
-  def factors(va: Int, cu: Int, fo: Set[Int]): Set[Int] = {
-    (va, cu, fo) match{
-      case(v, c, _) if(v < c) => fo
-      case (_, c, f) if(f.contains(c)) => fo
-      case (v, c, _) if(v % c == 0) => factors (va, cu+1, fo + cu + va/cu)
-      case (_, _, _) => factors(va, cu+1, fo)
+  def factors(value: Int, possibleFactor: Int, theFactors: Set[Int]): Set[Int] = {
+    (value, possibleFactor, theFactors) match{
+      case(v, c, _) if(v < (c*c)) => theFactors
+      case (_, c, f) if(f.contains(c)) => theFactors
+      case (v, c, _) if(v % c == 0) => factors (value, possibleFactor+1, theFactors + possibleFactor + value/possibleFactor)
+      case (_, _, _) => factors(value, possibleFactor+1, theFactors)
     }
   }
 
