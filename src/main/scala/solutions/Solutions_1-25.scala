@@ -432,3 +432,15 @@ object Solution_22 extends Solution{
     names.map(s => s.map(c => c.asInstanceOf[Long] - 64).sum).zipWithIndex.map(t => t._1 * (t._2 + 1)).sum
   }
 }
+
+object Solution_23 extends Solution{
+//  4179871
+//  Solved in: 37.596 seconds
+  override def solveIt:Any = {
+    val aNumbers = (1 to 28123).map(f => (f, Functions.properDivisors(f).sum)).filter(p => p._1 < p._2).map(_._1).toSet
+    (for{
+      a <- 1 to 28123
+      if(aNumbers.filter(_<a).forall(f => aNumbers.contains(a-f) == false))
+    }yield a).sum
+  }
+}
