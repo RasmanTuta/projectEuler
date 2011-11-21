@@ -4,6 +4,7 @@ import collection.immutable.Range
 import rasmantuta.math.{Functions, Series}
 import collection.Seq
 import org.joda.time.{DateTimeConstants, DateMidnight}
+import io.Source
 
 
 object Solution_1  extends Solution{
@@ -419,5 +420,15 @@ object Solution_21 extends Solution{
       if (i != j && j == x)
     } yield x
     amicables.sum
+  }
+}
+
+object Solution_22 extends Solution{
+//  871198282
+//  Solved in: 0.061 seconds
+  override def solveIt:Any = {
+    val url = getClass.getResource("/names.txt")
+    val names = Source.fromURL(url).getLines().next().replace("\"", "").split(",").toList.sortWith(_.compareTo(_) < 0)
+    names.map(s => s.map(c => c.asInstanceOf[Long] - 64).sum).zipWithIndex.map(t => t._1 * (t._2 + 1)).sum
   }
 }
