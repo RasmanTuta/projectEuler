@@ -444,3 +444,19 @@ object Solution_23 extends Solution{
     }yield a).sum
   }
 }
+
+object Solution_24 extends Solution{
+//  2783915460
+//  Solved in: 16.221 seconds
+
+  override def solveIt:Any = {
+    perm("0123456789")(999999)
+  }
+
+  def perm(s: String): Seq[String] = {
+    s.length() match {
+      case 1 => Seq(s)
+      case _ => s.flatMap(c => perm(s.filter(c != _)).map(c +: _))
+    }
+  }
+}
