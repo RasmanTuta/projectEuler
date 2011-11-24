@@ -460,3 +460,12 @@ object Solution_24 extends Solution{
     }
   }
 }
+
+object Solution_25 extends Solution{
+//  4782
+//  Solved in: 0.538 seconds
+
+  override def solveIt:Any = {
+    Series.bigFibonacci.takeWhile(_.toString.length() < 1000).size
+  }
+}
